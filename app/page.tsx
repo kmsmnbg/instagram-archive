@@ -25,13 +25,13 @@ export default function Home() {
   const [file, setFile] = useState<File | null>(null);
 
   const accounts = [
-    "@aaa",
-    "@bbb",
-    "@ccc",
-    "@ddd",
-    "@eee",
-    "@fff",
-    "@ggg",
+    "@rkive",
+    "@jin",
+    "@agustd",
+    "@uarmyhope",
+    "@j.m",
+    "@thv",
+    "@mnijungkook",
   ];
 
   async function fetchPosts() {
@@ -138,13 +138,17 @@ export default function Home() {
               setPasswordInput(e.target.value)
             }
             onKeyDown={(e) => {
-              if (
-                e.key === "Enter" &&
-                passwordInput === PASSWORD
-              ) {
-                setAuthorized(true);
-              }
-            }}
+  if (e.key === "Enter") {
+
+    if (passwordInput === PASSWORD) {
+      setAuthorized(true);
+
+    } else {
+      alert("비밀번호 오류");
+    }
+
+  }
+}}
             className="w-full bg-neutral-900 p-4 rounded-xl"
           />
 
