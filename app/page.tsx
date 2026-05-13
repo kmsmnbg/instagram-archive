@@ -170,6 +170,54 @@ export default function Home() {
             <h1 className="text-3xl font-bold tracking-tight">
               Archive
             </h1>
+            <div className="flex gap-4 overflow-x-auto px-4 pb-4">
+
+  <div
+    onClick={() =>
+      setSelectedAccount("ALL")
+    }
+    className="flex flex-col items-center cursor-pointer"
+  >
+
+    <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 p-[2px]">
+
+      <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-sm font-semibold">
+        ALL
+      </div>
+
+    </div>
+
+    <span className="text-xs mt-2">
+      ALL
+    </span>
+
+  </div>
+
+  {accounts.map((acc) => (
+    <div
+      key={acc}
+      onClick={() =>
+        setSelectedAccount(acc)
+      }
+      className="flex flex-col items-center cursor-pointer"
+    >
+
+      <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 p-[2px]">
+
+        <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-xs">
+          {acc.replace("@", "")}
+        </div>
+
+      </div>
+
+      <span className="text-xs mt-2">
+        {acc}
+      </span>
+
+    </div>
+  ))}
+
+</div>
           </div>
 
         </header>
