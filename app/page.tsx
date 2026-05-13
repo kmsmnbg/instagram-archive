@@ -16,7 +16,7 @@ export default function Home() {
   const [selectedPost, setSelectedPost] =
     useState<any | null>(null);
 
-  const [account, setAccount] = useState("@aaa");
+  const [account, setAccount] = useState("@rkive");
 
   const [selectedAccount, setSelectedAccount] =
     useState("ALL");
