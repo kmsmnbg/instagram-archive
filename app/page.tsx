@@ -103,6 +103,7 @@ export default function Home() {
       .eq("id", id);
 
     fetchPosts();
+    setSelectedPost(null);
   }
 
   async function updateDate(
@@ -136,6 +137,14 @@ export default function Home() {
             onChange={(e) =>
               setPasswordInput(e.target.value)
             }
+            onKeyDown={(e) => {
+              if (
+                e.key === "Enter" &&
+                passwordInput === PASSWORD
+              ) {
+                setAuthorized(true);
+              }
+            }}
             className="w-full bg-neutral-900 p-4 rounded-xl"
           />
 
@@ -170,54 +179,55 @@ export default function Home() {
             <h1 className="text-3xl font-bold tracking-tight">
               Archive
             </h1>
-            <div className="flex gap-4 overflow-x-auto px-4 pb-4">
+          </div>
 
-  <div
-    onClick={() =>
-      setSelectedAccount("ALL")
-    }
-    className="flex flex-col items-center cursor-pointer"
-  >
+          <div className="flex gap-4 overflow-x-auto px-4 pb-4">
 
-    <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 p-[2px]">
+            <div
+              onClick={() =>
+                setSelectedAccount("ALL")
+              }
+              className="flex flex-col items-center cursor-pointer"
+            >
 
-      <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-sm font-semibold">
-        ALL
-      </div>
+              <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 p-[2px]">
 
-    </div>
+                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-sm font-semibold">
+                  ALL
+                </div>
 
-    <span className="text-xs mt-2">
-      ALL
-    </span>
+              </div>
 
-  </div>
+              <span className="text-xs mt-2">
+                ALL
+              </span>
 
-  {accounts.map((acc) => (
-    <div
-      key={acc}
-      onClick={() =>
-        setSelectedAccount(acc)
-      }
-      className="flex flex-col items-center cursor-pointer"
-    >
+            </div>
 
-      <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 p-[2px]">
+            {accounts.map((acc) => (
+              <div
+                key={acc}
+                onClick={() =>
+                  setSelectedAccount(acc)
+                }
+                className="flex flex-col items-center cursor-pointer"
+              >
 
-        <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-xs">
-          {acc.replace("@", "")}
-        </div>
+                <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 p-[2px]">
 
-      </div>
+                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-xs">
+                    {acc.replace("@", "")}
+                  </div>
 
-      <span className="text-xs mt-2">
-        {acc}
-      </span>
+                </div>
 
-    </div>
-  ))}
+                <span className="text-xs mt-2">
+                  {acc}
+                </span>
 
-</div>
+              </div>
+            ))}
+
           </div>
 
         </header>
